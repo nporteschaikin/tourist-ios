@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2DF353B6-A5E3-4037-BD5F-AA59C5BFAAAD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Tourist</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</key>
+		<string>github.com:nporteschaikin/tourist-ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Tourist.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:nporteschaikin/tourist-ios</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tourist-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
