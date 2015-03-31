@@ -7,6 +7,9 @@
 //
 
 #import "ToursViewController.h"
+#import "TourViewController.h"
+#import "TouristSessionAPIRequest.h"
+#import "Constants.h"
 
 @interface ToursViewController ()
 
@@ -58,6 +61,29 @@ NSString * const toursViewControllerReuseIdentifier = @"toursViewControllerReuse
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
+    
+    /*
+     * Get tour ID
+     */
+    
+    NSDictionary *tour = [self.dataSource.tours objectAtIndex:indexPath.row];
+    NSString *tourID = [tour objectForKey:IOTourIDAttribute];
+    
+    /*
+     * Create request
+     */
+    
+    TouristSessionAPIRequest *request = [[TouristSessionAPIRequest alloc] initWithSession:self.session];
+    request.endpoint = [NSString stringWithFormat:IOTourEndpoint, tourID];
+    
+    /*
+     * Push to tour view controller.
+     */
+    
+    TourViewController *tourViewController = [[TourViewController alloc] initWithAPIRequest:request];
+    [self.navigationController pushViewController:tourViewController
+                                         animated:YES];
+    
 }
 
 @end

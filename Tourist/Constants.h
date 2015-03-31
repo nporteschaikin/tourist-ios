@@ -12,6 +12,7 @@ FOUNDATION_EXPORT NSString * const IOBaseURL;
 FOUNDATION_EXPORT NSString * const IOAuthEndpoint;
 FOUNDATION_EXPORT NSString * const IOToursNearEndpoint;
 FOUNDATION_EXPORT NSString * const IOToursCreateEndpoint;
+FOUNDATION_EXPORT NSString * const IOTourEndpoint;
 FOUNDATION_EXPORT NSString * const IOUserIDAttribute;
 FOUNDATION_EXPORT NSString * const IOTourIDAttribute;
 

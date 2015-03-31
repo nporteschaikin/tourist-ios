@@ -13,7 +13,6 @@
 
 @interface ToursNearbyViewController () <ToursDataSourceDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) ToursAPIDataSource *dataSource;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end

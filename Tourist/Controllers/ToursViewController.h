@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic, readonly) NSString *reuseIdentifier;
 @property (strong, nonatomic, readonly) Session *session;
+@property (strong, nonatomic) ToursDataSource *dataSource;
 
 - (id)initWithSession:(Session *)session;
 

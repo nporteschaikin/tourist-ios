@@ -13,6 +13,7 @@ NSString * const IOBaseURL = @"http://tourist-io.herokuapp.com/";
 NSString * const IOAuthEndpoint = @"auth";
 NSString * const IOToursNearEndpoint = @"tours/near";
 NSString * const IOToursCreateEndpoint = @"tours";
+NSString * const IOTourEndpoint = @"tours/%@";
 NSString * const IOUserIDAttribute = @"_id";
 NSString * const IOTourIDAttribute = @"_id";
 
