@@ -1,14 +1,14 @@
 //
-//  PinsTableViewCell.m
+//  PinsEditorTableViewCell.m
 //  Tourist
 //
-//  Created by Noah Portes Chaikin on 3/31/15.
+//  Created by Noah Portes Chaikin on 3/30/15.
 //  Copyright (c) 2015 Noah Portes Chaikin. All rights reserved.
 //
 
-#import "PinsTableViewCell.h"
+#import "PinsEditorTableViewCell.h"
 
-@interface PinsTableViewCell ()
+@interface PinsEditorTableViewCell ()
 
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *categoryLabel;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation PinsTableViewCell
+@implementation PinsEditorTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

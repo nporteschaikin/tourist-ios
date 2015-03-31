@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PinsDataSourceDelegate
+
+- (void)configureCell:(UITableViewCell *)cell
+               forPin:(NSDictionary *)pin;
+
+@end
+
 @interface PinsDataSource : NSObject <UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *pins;
+
+@property (strong, nonatomic) id<PinsDataSourceDelegate> delegate;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 

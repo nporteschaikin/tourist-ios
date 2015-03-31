@@ -7,7 +7,6 @@
 //
 
 #import "PinsDataSource.h"
-#import "PinsTableViewCell.h"
 
 @interface PinsDataSource ()
 
@@ -28,28 +27,16 @@
  * UITableViewDataSource
  */
 
-- (PinsTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PinsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
-    if (cell == nil) {
-        cell = [[PinsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                        reuseIdentifier:self.reuseIdentifier];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
     
     /*
      * Populate cells.
      */
     
     NSDictionary *pin = [self.pins objectAtIndex:indexPath.row];
-    cell.nameLabel.text = [pin objectForKey:@"name"];
-    cell.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
-    cell.categoryLabel.text = [pin objectForKey:@"category"];
-    
-    NSString *description = [pin objectForKey:@"description"];
-    if (description) {
-        cell.descriptionLabel.text = description;
-    } else {
-        cell.descriptionLabel.text = nil;
-    }
+    [self.delegate configureCell:cell
+                          forPin:pin];
     
     /*
      * Update constraints.
@@ -63,6 +50,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.pins.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
 @end

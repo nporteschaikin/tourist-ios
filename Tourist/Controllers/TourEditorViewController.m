@@ -8,6 +8,7 @@
 
 #import "TourEditorViewController.h"
 #import "TourEditorHeaderView.h"
+#import "PinsEditorTableViewCell.h"
 #import "PinEditorViewController.h"
 #import "PinsDataSource.h"
 #import "TouristSessionAPIRequest.h"
@@ -15,7 +16,7 @@
 #import "UIColor+Tourist.h"
 #import "Constants.h"
 
-@interface TourEditorViewController () <UINavigationControllerDelegate, PinEditorViewControllerDelegate, APIRequestDelegate>
+@interface TourEditorViewController () <UINavigationControllerDelegate, PinEditorViewControllerDelegate, APIRequestDelegate, PinsDataSourceDelegate>
 
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) PinEditorViewController *pinEditorViewController;
@@ -223,6 +224,8 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
         _tableView = [[UITableView alloc] init];
         _tableView.translatesAutoresizingMaskIntoConstraints = NO;
         _tableView.dataSource = self.dataSource;
+        [_tableView registerClass:[PinsEditorTableViewCell class]
+           forCellReuseIdentifier:tourPinsEditorViewControllerReuseIdentifier];
     }
     return _tableView;
 }
@@ -230,6 +233,7 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
 - (PinsDataSource *)dataSource {
     if (!_dataSource) {
         _dataSource = [[PinsDataSource alloc] initWithReuseIdentifier:tourPinsEditorViewControllerReuseIdentifier];
+        _dataSource.delegate = self;
     }
     return _dataSource;
 }
@@ -372,6 +376,23 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
 
 - (void)APIRequest:(APIRequest *)APIRequest error:(NSError *)error {
 
+}
+
+/*
+ * PinDataSourceDelegate
+ */
+
+- (void)configureCell:(PinsEditorTableViewCell *)cell forPin:(NSDictionary *)pin {
+    cell.nameLabel.text = [pin objectForKey:@"name"];
+    cell.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
+    cell.categoryLabel.text = [pin objectForKey:@"category"];
+    
+    NSString *description = [pin objectForKey:@"description"];
+    if (description) {
+        cell.descriptionLabel.text = description;
+    } else {
+        cell.descriptionLabel.text = nil;
+    }
 }
 
 @end
