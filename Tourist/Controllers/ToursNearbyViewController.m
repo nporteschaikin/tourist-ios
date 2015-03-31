@@ -35,7 +35,29 @@
      */
     
     self.navigationItem.title = @"Nearby";
+    
+    /*
+     * Add refresh control
+     */
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(handleRefreshControl:)
+             forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 
+}
+
+- (void)handleRefreshControl:(UIRefreshControl *)refreshControl {
+    
+    /*
+     * Perform fetch.
+     */
+    
+    if (self.dataSource) {
+        [self.dataSource performRequest];
+    }
+    
 }
 
 /*
@@ -112,6 +134,12 @@
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                   withRowAnimation:UITableViewRowAnimationFade];
+    
+    /*
+     * End refreshing if it's on.
+     */
+    
+    [self.refreshControl endRefreshing];
     
 }
 

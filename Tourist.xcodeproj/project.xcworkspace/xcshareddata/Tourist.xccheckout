@@ -10,14 +10,14 @@
 	<string>Tourist</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</key>
+		<key>42F5AA13B0EB0A9FF092CC0B16202406B48A916A</key>
 		<string>github.com:nporteschaikin/tourist-ios</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Tourist.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</key>
+		<key>42F5AA13B0EB0A9FF092CC0B16202406B48A916A</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</string>
+	<string>42F5AA13B0EB0A9FF092CC0B16202406B48A916A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4DFFC8B0B56862FE4798CB72864DFB278F174F1B</string>
+			<string>42F5AA13B0EB0A9FF092CC0B16202406B48A916A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>tourist-ios</string>
 		</dict>
