@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "AppearanceHelper.h"
+#import <HockeySDK/HockeySDK.h>
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface AppDelegate ()
@@ -19,7 +20,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"3153c1388c925fb72ab33d1556749567"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
