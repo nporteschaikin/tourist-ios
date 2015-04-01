@@ -8,6 +8,7 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 #import "LoginViewController.h"
+#import "UIColor+Tourist.h"
 
 @interface LoginViewController () <SessionDelegate, FBLoginViewDelegate>
 

@@ -22,3 +22,6 @@ FOUNDATION_EXPORT NSString * const FoursquareClientSecret;
 FOUNDATION_EXPORT NSString * const FoursquareVersionDate;
 
 FOUNDATION_EXPORT NSString * const SessionTokenUserDefaultsKey;
+
+FOUNDATION_EXPORT NSString * const TouristDefaultFontName;
+FOUNDATION_EXPORT NSString * const TouristDefaultBoldFontName;

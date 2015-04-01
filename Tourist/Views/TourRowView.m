@@ -7,6 +7,7 @@
 //
 
 #import "TourRowView.h"
+#import "Constants.h"
 
 @interface TourRowView ()
 
@@ -69,6 +70,8 @@
         _textLabel = [[UILabel alloc] init];
         _textLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _textLabel.numberOfLines = 0;
+        _textLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                          size:14.0f];
     }
     return _textLabel;
 }

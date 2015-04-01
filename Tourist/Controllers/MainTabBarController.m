@@ -46,8 +46,6 @@
          * Set tab bar item.
          */
         
-        toursNearbyViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured
-                                                                                          tag:0];
         toursNearbyViewController.tabBarItem.title = @"Nearby";
         
         /*

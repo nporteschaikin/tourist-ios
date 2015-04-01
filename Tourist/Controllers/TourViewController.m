@@ -7,15 +7,13 @@
 //
 
 #import "TourViewController.h"
-#import "PinsTableViewCell.h"
 #import "TourHeaderView.h"
 #import "RowsView.h"
 #import "TourRowView.h"
-#import "PinsDataSource.h"
 #import "PinsRowView.h"
 #import "UIColor+Tourist.h"
 
-@interface TourViewController () <APIRequestDelegate, PinsDataSourceDelegate>
+@interface TourViewController () <APIRequestDelegate>
 
 @property (strong, nonatomic) TouristSessionAPIRequest *request;
 @property (strong, nonatomic) UIScrollView *scrollView;
@@ -218,7 +216,7 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
         _rowsView = [[RowsView alloc] init];
         _rowsView.translatesAutoresizingMaskIntoConstraints = NO;
         _rowsView.separatorSize = 1.0f;
-        _rowsView.backgroundColor = [UIColor touristGreyColorAlpha:0.25f];
+        _rowsView.backgroundColor = [UIColor touristLightGrayColorAlpha:0.25f];
         [_rowsView addRow:self.userNameRowView];
     }
     return _rowsView;
@@ -274,12 +272,15 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
      */
     
     PinsRowView *pinView;
-    for (NSDictionary *pin in pins) {
+    NSDictionary *pin;
+    for (int i=0; i<pins.count; i++) {
+        pin = [pins objectAtIndex:i];
         pinView = [[PinsRowView alloc] init];
         pinView.nameLabel.text = [pin objectForKey:@"name"];
         pinView.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
         pinView.categoryLabel.text = [pin objectForKey:@"category"];
         pinView.descriptionLabel.text = [pin objectForKey:@"description"];
+        pinView.numberLabel.text = [NSString stringWithFormat:@"%d", i+1];
         [self.rowsView addRow:pinView];
     }
 }
@@ -290,24 +291,6 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
 
 - (void)APIRequest:(APIRequest *)APIRequest error:(NSError *)error {
     
-}
-
-/*
- * Pin data source delegate
- */
-
-- (void)configureCell:(PinsTableViewCell *)cell
-               forPin:(NSDictionary *)pin {
-    cell.nameLabel.text = [pin objectForKey:@"name"];
-    cell.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
-    cell.categoryLabel.text = [pin objectForKey:@"category"];
-    
-    NSString *description = [pin objectForKey:@"description"];
-    if (description) {
-        cell.descriptionLabel.text = description;
-    } else {
-        cell.descriptionLabel.text = nil;
-    }
 }
 
 @end

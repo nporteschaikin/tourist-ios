@@ -10,25 +10,37 @@
 
 @implementation UIColor (Tourist)
 
-+ (UIColor *)touristBlueColorAlpha:(float)alpha {
-    return [UIColor colorWithRed:0
-                           green:0
-                            blue:1
++ (UIColor *)touristRedColorAlpha:(float)alpha {
+    return [UIColor colorWithRed:0.729
+                           green:0.055
+                            blue:0.098
+                           alpha:1];
+}
+
++ (UIColor *)touristDarkRedColorAlpha:(float)alpha {
+    return [UIColor colorWithRed:0.298
+                           green:0.102
+                            blue:0.102
                            alpha:alpha];
 }
 
-+ (UIColor *)touristLightGreyColorAlpha:(float)alpha {
-    return [UIColor colorWithRed:0.945
-                           green:0.945
-                            blue:0.945
++ (UIColor *)touristYellowColorAlpha:(float)alpha {
+    return [UIColor colorWithRed:0.965
+                           green:0.898
+                            blue:0.608
                            alpha:alpha];
 }
 
-+ (UIColor *)touristGreyColorAlpha:(float)alpha {
-    return [UIColor colorWithRed:0.6
-                           green:0.6
-                            blue:0.6
++ (UIColor *)touristLightYellowColorAlpha:(float)alpha {
+    return [UIColor colorWithRed:0.988
+                           green:0.984
+                            blue:0.886
                            alpha:alpha];
+}
+
++ (UIColor *)touristLightGrayColorAlpha:(float)alpha {
+    return [UIColor colorWithWhite:0.8
+                             alpha:alpha];
 }
 
 @end

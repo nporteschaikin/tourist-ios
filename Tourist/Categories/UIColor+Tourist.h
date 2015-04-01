@@ -10,8 +10,10 @@
 
 @interface UIColor (Tourist)
 
-+ (UIColor *)touristBlueColorAlpha:(float)alpha;
-+ (UIColor *)touristGreyColorAlpha:(float)alpha;
-+ (UIColor *)touristLightGreyColorAlpha:(float)alpha;
++ (UIColor *)touristRedColorAlpha:(float)alpha;
++ (UIColor *)touristDarkRedColorAlpha:(float)alpha;
++ (UIColor *)touristYellowColorAlpha:(float)alpha;
++ (UIColor *)touristLightYellowColorAlpha:(float)alpha;
++ (UIColor *)touristLightGrayColorAlpha:(float)alpha;
 
 @end

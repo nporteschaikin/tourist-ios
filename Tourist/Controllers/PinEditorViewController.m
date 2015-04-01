@@ -280,7 +280,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
         _detailsEditorView.delegate = self;
         _detailsEditorView.translatesAutoresizingMaskIntoConstraints = NO;
         _detailsEditorView.hidden = YES;
-        _detailsEditorView.backgroundColor = [UIColor touristGreyColorAlpha:1];
+        _detailsEditorView.backgroundColor = [UIColor touristLightGrayColorAlpha:1];
     }
     return _detailsEditorView;
 }

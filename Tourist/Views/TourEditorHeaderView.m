@@ -8,6 +8,8 @@
 
 #import "TourEditorHeaderView.h"
 #import "TouristTextField.h"
+#import "UIColor+Tourist.h"
+#import "Constants.h"
 
 @interface TourEditorHeaderView ()
 

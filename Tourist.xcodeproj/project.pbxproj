@@ -45,7 +45,6 @@
 		4FFEC6F01ACC36B0008625EE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEC6EF1ACC36B0008625EE /* Security.framework */; };
 		4FFEC6F21ACC36B8008625EE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEC6F11ACC36B8008625EE /* SystemConfiguration.framework */; };
 		4FFEC6F81ACC36CB008625EE /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEC6F41ACC36CB008625EE /* HockeySDK.framework */; };
-		4FFEC6F91ACC36CB008625EE /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4FFEC6F61ACC36CB008625EE /* HockeySDK.xcconfig */; };
 		4FFEC6FA1ACC36CB008625EE /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4FFEC6F71ACC36CB008625EE /* HockeySDKResources.bundle */; };
 		E44DBE091AC86D91007E90F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E44DBE081AC86D91007E90F3 /* main.m */; };
 		E44DBE0C1AC86D91007E90F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E44DBE0B1AC86D91007E90F3 /* AppDelegate.m */; };
@@ -483,7 +482,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FFEC6F91ACC36CB008625EE /* HockeySDK.xcconfig in Resources */,
 				4FFEC6FA1ACC36CB008625EE /* HockeySDKResources.bundle in Resources */,
 				E44DBE141AC86D91007E90F3 /* Images.xcassets in Resources */,
 				E44DBE381AC86F42007E90F3 /* Launch Screen.xib in Resources */,

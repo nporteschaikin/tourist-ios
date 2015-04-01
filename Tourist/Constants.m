@@ -23,3 +23,6 @@ NSString * const FoursquareClientSecret = @"FYIJSJWGT5EHO5LIOFUEC5OEF3JDWO5NV1RD
 NSString * const FoursquareVersionDate = @"20150330";
 
 NSString * const SessionTokenUserDefaultsKey = @"TouristSessionTokenUserDefaultsKey";
+
+NSString * const TouristDefaultFontName = @"Avenir";
+NSString * const TouristDefaultBoldFontName = @"Avenir-Heavy";

@@ -14,5 +14,6 @@
 @property (strong, nonatomic, readonly) UILabel *categoryLabel;
 @property (strong, nonatomic, readonly) UILabel *addressLabel;
 @property (strong, nonatomic, readonly) UILabel *descriptionLabel;
+@property (strong, nonatomic, readonly) UILabel *numberLabel;
 
 @end

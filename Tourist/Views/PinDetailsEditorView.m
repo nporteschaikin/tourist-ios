@@ -142,7 +142,7 @@
     if (!_saveButton) {
         _saveButton = [UIButton touristLargeButton];
         _saveButton.translatesAutoresizingMaskIntoConstraints = NO;
-        _saveButton.backgroundColor = [UIColor touristBlueColorAlpha:1];
+        _saveButton.backgroundColor = [UIColor touristRedColorAlpha:1];
         [_saveButton setTitle:@"Save"
                      forState:UIControlStateNormal];
         [_saveButton setTitleColor:[UIColor whiteColor]

@@ -7,6 +7,7 @@
 //
 
 #import "PinsRowView.h"
+#import "Constants.h"
 
 @interface PinsRowView ()
 
@@ -14,6 +15,7 @@
 @property (strong, nonatomic) UILabel *categoryLabel;
 @property (strong, nonatomic) UILabel *addressLabel;
 @property (strong, nonatomic) UILabel *descriptionLabel;
+@property (strong, nonatomic) UILabel *numberLabel;
 
 @end
 
@@ -31,10 +33,12 @@
         /*
          * Add subviews.
          */
+        
         [self addSubview:self.nameLabel];
         [self addSubview:self.categoryLabel];
         [self addSubview:self.addressLabel];
         [self addSubview:self.descriptionLabel];
+        [self addSubview:self.numberLabel];
         
         /*
          * Setup constraints.
@@ -46,6 +50,25 @@
 }
 
 - (void)setupConstraints {
+    
+    /*
+     * numberLabel
+     */
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.numberLabel
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1
+                                                      constant:17]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.numberLabel
+                                                     attribute:NSLayoutAttributeRight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeRight
+                                                    multiplier:1
+                                                      constant:-17]];
     
     /*
      * nameLabel
@@ -61,10 +84,10 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
                                                      attribute:NSLayoutAttributeRight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
+                                                        toItem:self.numberLabel
                                                      attribute:NSLayoutAttributeRight
                                                     multiplier:1
-                                                      constant:-17]];
+                                                      constant:-30]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
@@ -135,7 +158,7 @@
                                                         toItem:self.addressLabel
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1
-                                                      constant:8]];
+                                                      constant:16]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionLabel
                                                      attribute:NSLayoutAttributeLeft
                                                      relatedBy:NSLayoutRelationEqual
@@ -164,6 +187,8 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _nameLabel.numberOfLines = 0;
+        _nameLabel.font = [UIFont fontWithName:TouristDefaultBoldFontName
+                                          size:18.0f];
     }
     return _nameLabel;
 }
@@ -173,6 +198,8 @@
         _addressLabel = [[UILabel alloc] init];
         _addressLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _addressLabel.numberOfLines = 0;
+        _addressLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                             size:16.0f];
     }
     return _addressLabel;
 }
@@ -182,6 +209,8 @@
         _categoryLabel = [[UILabel alloc] init];
         _categoryLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _categoryLabel.numberOfLines = 1;
+        _categoryLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                              size:16.0f];
     }
     return _categoryLabel;
 }
@@ -192,8 +221,23 @@
         _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _descriptionLabel.numberOfLines = 0;
         _descriptionLabel.textColor = [UIColor grayColor];
+        _descriptionLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                                 size:18.0f];
     }
     return _descriptionLabel;
+}
+
+- (UILabel *)numberLabel {
+    if (!_numberLabel) {
+        _numberLabel = [[UILabel alloc] init];
+        _numberLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _numberLabel.numberOfLines = 0;
+        _numberLabel.textColor = [UIColor colorWithWhite:0.8
+                                                   alpha:0.5];
+        _numberLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                            size:40.0f];
+    }
+    return _numberLabel;
 }
 
 @end

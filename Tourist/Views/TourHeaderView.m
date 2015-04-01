@@ -7,12 +7,12 @@
 //
 
 #import "TourHeaderView.h"
+#import "Constants.h"
 
 @interface TourHeaderView ()
 
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *descriptionLabel;
-@property (strong, nonatomic) UILabel *userNameLabel;
 @property (strong, nonatomic) UILabel *pinsLabel;
 
 @end
@@ -126,6 +126,8 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _nameLabel.textColor = [UIColor whiteColor];
+        _nameLabel.font = [UIFont fontWithName:TouristDefaultBoldFontName
+                                          size:16.0f];
     }
     return _nameLabel;
 }
@@ -135,17 +137,10 @@
         _descriptionLabel = [[UILabel alloc] init];
         _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _descriptionLabel.textColor = [UIColor whiteColor];
+        _descriptionLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                                 size:14.0f];
     }
     return _descriptionLabel;
-}
-
-- (UILabel *)userNameLabel {
-    if (!_userNameLabel) {
-        _userNameLabel = [[UILabel alloc] init];
-        _userNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _userNameLabel.textColor = [UIColor whiteColor];
-    }
-    return _userNameLabel;
 }
 
 - (UILabel *)pinsLabel {
@@ -153,6 +148,8 @@
         _pinsLabel = [[UILabel alloc] init];
         _pinsLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _pinsLabel.textColor = [UIColor whiteColor];
+        _pinsLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                          size:12.0f];
     }
     return _pinsLabel;
 }
