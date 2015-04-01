@@ -12,7 +12,8 @@
 #import "RowsView.h"
 #import "TourRowView.h"
 #import "PinsDataSource.h"
-#import "ScrollDisabledTableView.h"
+#import "PinsRowView.h"
+#import "UIColor+Tourist.h"
 
 @interface TourViewController () <APIRequestDelegate, PinsDataSourceDelegate>
 
@@ -22,8 +23,6 @@
 @property (strong, nonatomic) TourHeaderView *headerView;
 @property (strong, nonatomic) RowsView *rowsView;
 @property (strong, nonatomic) TourRowView *userNameRowView;
-@property (strong, nonatomic) ScrollDisabledTableView *pinsTableView;
-@property (strong, nonatomic) PinsDataSource *pinsDataSource;
 
 @end
 
@@ -44,8 +43,6 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
         [self.scrollView addSubview:self.contentView];
         [self.contentView addSubview:self.headerView];
         [self.contentView addSubview:self.rowsView];
-        [self.contentView addSubview:self.pinsTableView];
-        
         
         /*
          * Set up constraints.
@@ -62,6 +59,12 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
     }
     
     return self;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    self.scrollView.contentSize = self.contentView.frame.size;
 }
 
 - (void)setupConstraints {
@@ -88,7 +91,7 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
                                                           attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.bottomLayoutGuide
-                                                          attribute:NSLayoutAttributeTop
+                                                          attribute:NSLayoutAttributeBottom
                                                          multiplier:1
                                                            constant:0]];
     
@@ -104,17 +107,17 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
                                                                multiplier:1
                                                                  constant:0]];
     [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
+                                                                attribute:NSLayoutAttributeLeft
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeLeft
+                                                               multiplier:1
+                                                                 constant:0]];
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
                                                                 attribute:NSLayoutAttributeWidth
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:self.scrollView
                                                                 attribute:NSLayoutAttributeWidth
-                                                               multiplier:1
-                                                                 constant:0]];
-    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView
-                                                                attribute:NSLayoutAttributeHeight
-                                                                relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                   toItem:self.scrollView
-                                                                attribute:NSLayoutAttributeHeight
                                                                multiplier:1
                                                                  constant:0]];
     
@@ -143,13 +146,13 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
                                                                  attribute:NSLayoutAttributeRight
                                                                 multiplier:1
                                                                   constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView
-                                                                 attribute:NSLayoutAttributeHeight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeHeight
-                                                                multiplier:0.3
-                                                                  constant:0]];
+    [self.scrollView addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.scrollView
+                                                                attribute:NSLayoutAttributeHeight
+                                                               multiplier:0.3
+                                                                 constant:0]];
     
     /*
      * Rows view
@@ -176,33 +179,7 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
                                                                  attribute:NSLayoutAttributeWidth
                                                                 multiplier:1
                                                                   constant:0]];
-    
-    /*
-     * Pins table view
-     */
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.pinsTableView
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.headerView
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.pinsTableView
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.headerView
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.pinsTableView
-                                                                 attribute:NSLayoutAttributeWidth
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.headerView
-                                                                 attribute:NSLayoutAttributeWidth
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.pinsTableView
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.rowsView
                                                                  attribute:NSLayoutAttributeBottom
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:self.contentView
@@ -240,9 +217,9 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
     if (!_rowsView) {
         _rowsView = [[RowsView alloc] init];
         _rowsView.translatesAutoresizingMaskIntoConstraints = NO;
-        _rowsView.separatorSize = 1;
+        _rowsView.separatorSize = 1.0f;
+        _rowsView.backgroundColor = [UIColor touristGreyColorAlpha:0.25f];
         [_rowsView addRow:self.userNameRowView];
-        [_rowsView sizeToFit];
     }
     return _rowsView;
 }
@@ -254,25 +231,6 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
         _userNameRowView.backgroundColor = [UIColor whiteColor];
     }
     return _userNameRowView;
-}
-
-- (ScrollDisabledTableView *)pinsTableView {
-    if (!_pinsTableView) {
-        _pinsTableView = [[ScrollDisabledTableView alloc] init];
-        _pinsTableView.translatesAutoresizingMaskIntoConstraints = NO;
-        _pinsTableView.dataSource = self.pinsDataSource;
-        [_pinsTableView registerClass:[PinsTableViewCell class]
-               forCellReuseIdentifier:tourViewControllerReuseIdentifier];
-    }
-    return _pinsTableView;
-}
-
-- (PinsDataSource *)pinsDataSource {
-    if (!_pinsDataSource) {
-        _pinsDataSource = [[PinsDataSource alloc] initWithReuseIdentifier:tourViewControllerReuseIdentifier];
-        _pinsDataSource.delegate = self;
-    }
-    return _pinsDataSource;
 }
 
 /*
@@ -315,8 +273,15 @@ static NSString * const tourViewControllerReuseIdentifier = @"tourViewController
      * Set pins and refresh table
      */
     
-    self.pinsDataSource.pins = pins;
-    [self.pinsTableView reloadData];
+    PinsRowView *pinView;
+    for (NSDictionary *pin in pins) {
+        pinView = [[PinsRowView alloc] init];
+        pinView.nameLabel.text = [pin objectForKey:@"name"];
+        pinView.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
+        pinView.categoryLabel.text = [pin objectForKey:@"category"];
+        pinView.descriptionLabel.text = [pin objectForKey:@"description"];
+        [self.rowsView addRow:pinView];
+    }
 }
 
 - (void)APIRequest:(APIRequest *)APIRequest failResponse:(NSURLResponse *)response data:(NSData *)data {

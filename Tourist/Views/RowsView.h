@@ -11,7 +11,7 @@
 @interface RowsView : UIView
 
 @property (strong, nonatomic, readonly) NSArray *rows;
-@property (nonatomic) int separatorSize;
+@property (nonatomic) CGFloat separatorSize;
 
 - (void)insertRow:(UIView *)row
           atIndex:(NSUInteger)index;

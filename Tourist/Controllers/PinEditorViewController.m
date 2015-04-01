@@ -11,6 +11,7 @@
 #import "FoursquareVenuesTableViewCell.h"
 #import "FoursquareVenuesDataSource.h"
 #import "FoursquareHelper.h"
+#import "UIColor+Tourist.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface PinEditorViewController () <UINavigationBarDelegate, UISearchBarDelegate, UITableViewDelegate, FoursquareVenuesDataSourceDelegate, CLLocationManagerDelegate, PinDetailsEditorViewDelegate>
@@ -256,6 +257,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
         _detailsEditorView.delegate = self;
         _detailsEditorView.translatesAutoresizingMaskIntoConstraints = NO;
         _detailsEditorView.hidden = YES;
+        _detailsEditorView.backgroundColor = [UIColor touristGreyColorAlpha:1];
     }
     return _detailsEditorView;
 }

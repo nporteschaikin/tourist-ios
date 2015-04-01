@@ -43,13 +43,20 @@
         ToursNearbyViewController *toursNearbyViewController = [[ToursNearbyViewController alloc] initWithSession:self.session];
         
         /*
+         * Set tab bar item.
+         */
+        
+        toursNearbyViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured
+                                                                                          tag:0];
+        toursNearbyViewController.tabBarItem.title = @"Nearby";
+        
+        /*
          * Set navigation bar button item
          */
         
         toursNearbyViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                                                                                                     target:self
                                                                                                                     action:@selector(handleToursNearbyViewControllerComposeButton)];
-        
         /*
          * Create navigation controller
          */

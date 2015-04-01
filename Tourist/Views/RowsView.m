@@ -104,7 +104,7 @@
                                                              constant:0]
                                ]];
         
-        if (self.rows.count == i - 2) {
+        if (self.rows.count > (i - 1)) {
             
             prevRow = [self.rows objectAtIndex:i-1];
             
@@ -127,7 +127,7 @@
         } else {
             
             /*
-             * Otherwise, constrain to bottom of row.
+             * Otherwise, constrain to top of view.
              */
             
             [self addConstraints:@[
@@ -141,6 +141,26 @@
                                    ]];
             
         };
+        
+        if (self.rows.count - 1 == i) {
+            
+            /*
+             * If this is the last row, 
+             * constrain to bottom of view.
+             */
+            
+            [self addConstraints:@[
+                                   [NSLayoutConstraint constraintWithItem:row
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1
+                                                                 constant:0]
+                                   ]];
+            
+        }
+        
     }
 }
 
