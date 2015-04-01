@@ -55,10 +55,12 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
         [self.view addSubview:self.saveButton];
         
         /*
-         * Setup constraints
+         * Setup constraints & gesture 
+         * recognizers.
          */
         
         [self setupConstraints];
+        [self setupGestureRecognizers];
     }
     return self;
 }
@@ -182,6 +184,38 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
                                                           attribute:NSLayoutAttributeLeft
                                                          multiplier:1
                                                            constant:0]];
+}
+
+- (void)setupGestureRecognizers {
+    
+    /*
+     * Tap table view gesture
+     */
+    
+    UITapGestureRecognizer *tapTableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(handleTapTableViewGesture)];
+    [self.tableView addGestureRecognizer:tapTableViewGesture];
+    
+}
+
+- (void)handleSwipeUpGesture {
+    
+    /*
+     * Resign first responder.
+     */
+    
+    [self.view endEditing:YES];
+    
+}
+
+- (void)handleTapTableViewGesture {
+    
+    /*
+     * Resign first responder.
+     */
+    
+    [self.view endEditing:YES];
+    
 }
 
 - (void)presentPinEditorViewController {

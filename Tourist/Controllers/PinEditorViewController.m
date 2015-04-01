@@ -40,6 +40,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
         [self.view addSubview:self.tableView];
         [self.view addSubview:self.detailsEditorView];
         [self setupConstraints];
+        [self setupGestureRecognizers];
     }
     return self;
 }
@@ -177,6 +178,28 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
     
 }
 
+- (void)setupGestureRecognizers {
+    
+    /*
+     * Swipe up gesture
+     */
+    
+    UISwipeGestureRecognizer *swipeUpGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                         action:@selector(handleSwipeUpGesture)];
+    swipeUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeUpGesture];
+    
+}
+
+- (void)handleSwipeUpGesture {
+    
+    /*
+     * Resign first responder.
+     */
+    
+    [self.view endEditing:YES];
+}
+
 - (UINavigationBar *)navigationBar {
     if (!_navigationBar) {
         _navigationBar = [[UINavigationBar alloc] init];
@@ -299,7 +322,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
     
 }
 
-- (void)dismissDetailsEditorViewController {
+- (void)dismissDetailsEditorView {
     
     /*
      * animate
@@ -362,7 +385,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
      * Hide details editor view controller.
      */
     
-    [self dismissDetailsEditorViewController];
+    [self dismissDetailsEditorView];
 }
 
 /*
