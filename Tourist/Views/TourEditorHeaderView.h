@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class TourEditorHeaderView;
+
+@protocol TourEditorHeaderViewDelegate
+
+- (void)tourEditorHeaderViewTappedPictureButton:(TourEditorHeaderView *)view;
+
+@end
+
 @interface TourEditorHeaderView : UIView
 
+@property (strong, nonatomic) id<TourEditorHeaderViewDelegate> delegate; 
 @property (strong, nonatomic, readonly) UITextField *nameTextField;
 @property (strong, nonatomic, readonly) UITextField *descriptionTextField;
+@property (strong, nonatomic) UIImage *photo;
 
 @end

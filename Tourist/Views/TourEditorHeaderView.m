@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) UITextField *nameTextField;
 @property (strong, nonatomic) UITextField *descriptionTextField;
+@property (strong, nonatomic) UIButton *pictureButton;
+@property (strong, nonatomic) UIImageView *photoView;
 
 @end
 
@@ -33,8 +35,13 @@
          * Add subviews
          */
         
-        [self addSubview:self.nameTextField];
-        [self addSubview:self.descriptionTextField];
+        [self addSubview:self.photoView];
+        [self insertSubview:self.nameTextField
+               aboveSubview:self.photoView];
+        [self insertSubview:self.descriptionTextField
+               aboveSubview:self.photoView];
+        [self insertSubview:self.pictureButton
+               aboveSubview:self.photoView];
         
         /*
          * Setup constraints.
@@ -47,6 +54,39 @@
 }
 
 - (void)setupConstraints {
+    
+    /*
+     * photoView
+     */
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1
+                                                      constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
+                                                     attribute:NSLayoutAttributeBottom
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeBottom
+                                                    multiplier:1
+                                                      constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
+                                                     attribute:NSLayoutAttributeLeft
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeft
+                                                    multiplier:1
+                                                      constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
+                                                     attribute:NSLayoutAttributeRight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeRight
+                                                    multiplier:1
+                                                      constant:0]];
     
     /*
      * descriptionTextField
@@ -100,6 +140,25 @@
                                                     multiplier:1
                                                       constant:0]];
     
+    /*
+     * pictureButton
+     */
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pictureButton
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1
+                                                      constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pictureButton
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1
+                                                      constant:0]];
+    
 }
 
 - (UITextField *)nameTextField {
@@ -122,6 +181,44 @@
                                                                                       attributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
     }
     return _descriptionTextField;
+}
+
+- (UIButton *)pictureButton {
+    if (!_pictureButton) {
+        _pictureButton = [[UIButton alloc] init];
+        _pictureButton.translatesAutoresizingMaskIntoConstraints = NO;
+        _pictureButton.contentEdgeInsets = UIEdgeInsetsMake(8, 10, 8, 10);
+        [_pictureButton setTitleColor:[UIColor whiteColor]
+                             forState:UIControlStateNormal];
+        [_pictureButton setTitle:@"Tap to add a cover photo"
+                        forState:UIControlStateNormal];
+        [_pictureButton addTarget:self
+                           action:@selector(handlePictureButton)
+                 forControlEvents:UIControlEventTouchDown];
+    }
+    return _pictureButton;
+}
+
+- (UIImageView *)photoView {
+    if (!_photoView) {
+        _photoView = [[UIImageView alloc] init];
+        _photoView.translatesAutoresizingMaskIntoConstraints = NO;
+    }
+    return _photoView;
+}
+
+- (void)setPhoto:(UIImage *)photo {
+    _photo = photo;
+    
+    /*
+     * Set photo view image.
+     */
+    
+    self.photoView.image = photo;
+}
+
+- (void)handlePictureButton {
+    [self.delegate tourEditorHeaderViewTappedPictureButton:self];
 }
 
 @end

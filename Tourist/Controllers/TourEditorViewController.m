@@ -16,7 +16,7 @@
 #import "UIColor+Tourist.h"
 #import "Constants.h"
 
-@interface TourEditorViewController () <UINavigationControllerDelegate, PinEditorViewControllerDelegate, APIRequestDelegate, PinsDataSourceDelegate>
+@interface TourEditorViewController () <UINavigationControllerDelegate, PinEditorViewControllerDelegate, APIRequestDelegate, PinsDataSourceDelegate, TourEditorHeaderViewDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) PinEditorViewController *pinEditorViewController;
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (strong, nonatomic) PinsDataSource *dataSource;
 @property (strong, nonatomic) TouristSessionAPIRequest *request;
+@property (strong, nonatomic) UIAlertController *imagePickerActionSheet;
 
 @end
 
@@ -275,9 +276,31 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
 - (TourEditorHeaderView *)headerView {
     if (!_headerView) {
         _headerView = [[TourEditorHeaderView alloc] init];
+        _headerView.delegate = self;
         _headerView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return _headerView;
+}
+
+- (UIAlertController *)imagePickerActionSheet {
+    if (!_imagePickerActionSheet) {
+        _imagePickerActionSheet = [UIAlertController alertControllerWithTitle:@"Add a cover photo"
+                                                                      message:nil
+                                                               preferredStyle:UIAlertControllerStyleActionSheet];
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            [_imagePickerActionSheet addAction:[UIAlertAction actionWithTitle:@"Camera"
+                                                                        style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction *action) {
+                                                                          [self presentImagePickerControllerForSourceType:UIImagePickerControllerSourceTypeCamera];
+                                                                      }]];
+        }
+        [_imagePickerActionSheet addAction:[UIAlertAction actionWithTitle:@"Photo Library"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction *action) {
+                                                                      [self presentImagePickerControllerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+                                                                  }]];
+    }
+    return _imagePickerActionSheet;
 }
 
 - (void)handleSaveButtonTouchDown {
@@ -327,9 +350,11 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
     if (!_toolbar) {
         _toolbar = [[UIToolbar alloc] init];
         _toolbar.translatesAutoresizingMaskIntoConstraints = NO;
-        _toolbar.barTintColor = [UIColor clearColor];
         _toolbar.tintColor = [UIColor whiteColor];
-        _toolbar.translucent = NO;
+        _toolbar.translucent = YES;
+        [_toolbar setBackgroundImage:[[UIImage alloc] init]
+                  forToolbarPosition:UIBarPositionAny
+                          barMetrics:UIBarMetricsDefault];
         _toolbar.items = @[
                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                          target:self
@@ -347,6 +372,27 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
 
 - (void)dismissViewController {
     [self.delegate dismissTourEditorViewController];
+}
+
+- (void)presentImagePickerControllerForSourceType:(UIImagePickerControllerSourceType)sourceType {
+    
+    /*
+     * Create image picker controller.
+     */
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = sourceType;
+    imagePickerController.delegate = self;
+    
+    /*
+     * Present image picker controller
+     */
+    
+    [self presentViewController:imagePickerController
+                       animated:YES
+                     completion:nil];
+    
 }
 
 /*
@@ -427,6 +473,37 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
     } else {
         cell.descriptionLabel.text = nil;
     }
+}
+
+/*
+ * TourHeaderViewDelegate
+ */
+
+- (void)tourEditorHeaderViewTappedPictureButton:(TourEditorHeaderView *)view {
+    [self presentViewController:self.imagePickerActionSheet
+                       animated:YES
+                     completion:nil];
+}
+
+/*
+ * UIImagePickerControllerDelegate
+ */
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    /*
+     * Dismiss image picker view.
+     */
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+    
+    /*
+     * Set photo in header.
+     */
+    
+    self.headerView.photo = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
 }
 
 @end
