@@ -30,90 +30,94 @@
 
 - (void)setupConstraints {
     
-    /*
-     * nameLabel
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeLeft
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeft
-                                                    multiplier:1
-                                                      constant:17]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1
-                                                      constant:-17]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1
-                                                      constant:17]];
-    
-    /*
-     * categoryLabel
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryLabel
-                                                     attribute:NSLayoutAttributeLeft
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeLeft
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryLabel
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryLabel
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                      constant:8]];
-    
-    /*
-     * addressLabel
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                     attribute:NSLayoutAttributeLeft
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeLeft
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.nameLabel
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.categoryLabel
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                      constant:8]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                      constant:-17]];
+    [self addConstraints:@[
+                           
+                           /*
+                            * nameLabel
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeLeft
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeLeft
+                                                       multiplier:1
+                                                         constant:17],
+                           [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeRight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeRight
+                                                       multiplier:1
+                                                         constant:-17],
+                           [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeTop
+                                                       multiplier:1
+                                                         constant:17],
+                           
+                           /*
+                            * categoryLabel
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.categoryLabel
+                                                        attribute:NSLayoutAttributeLeft
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeLeft
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.categoryLabel
+                                                        attribute:NSLayoutAttributeRight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeRight
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.categoryLabel
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeBottom
+                                                       multiplier:1
+                                                         constant:8],
+                           
+                           /*
+                            * addressLabel
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                        attribute:NSLayoutAttributeLeft
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeLeft
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                        attribute:NSLayoutAttributeRight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.nameLabel
+                                                        attribute:NSLayoutAttributeRight
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.categoryLabel
+                                                        attribute:NSLayoutAttributeBottom
+                                                       multiplier:1
+                                                         constant:8],
+                           [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                        attribute:NSLayoutAttributeBottom
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeBottom
+                                                       multiplier:1
+                                                         constant:-17]
+                           
+                           ]];
 }
 
 - (UILabel *)nameLabel {

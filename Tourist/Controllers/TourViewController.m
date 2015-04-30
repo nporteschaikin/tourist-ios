@@ -27,10 +27,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /*
+     * Set up table view.
+     */
 
     self.tableView.dataSource = self.dataSource;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
+    
+    /*
+     * Set up data source.
+     */
     
     [self.dataSource registerReuseIdentifiersForTableView:self.tableView];
     [self.dataSource performRequest];
@@ -41,7 +49,19 @@
  */
 
 - (void)tourDataSourceDidFetchTour:(TourDataSource *)tourDataSource {
+    
+    /*
+     * Set title.
+     */
+    
+    self.navigationItem.title = [tourDataSource.tour objectForKey:@"name"];
+    
+    /*
+     * Reload table
+     */
+    
     [self.tableView reloadData];
+    
 }
 
 /*
@@ -57,15 +77,5 @@
             return UITableViewAutomaticDimension;
     }
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSInteger section = indexPath.section;
-//    switch (section) {
-//        case TourDataSourceSectionHeader:
-//            return 250.f;
-//        default:
-//            return 500.f;
-//    }
-//}
 
 @end

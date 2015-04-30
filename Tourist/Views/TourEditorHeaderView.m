@@ -55,109 +55,112 @@
 
 - (void)setupConstraints {
     
-    /*
-     * photoView
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
-                                                     attribute:NSLayoutAttributeLeft
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeft
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoView
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1
-                                                      constant:0]];
-    
-    /*
-     * descriptionTextField
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionTextField
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                      constant:-17]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionTextField
-                                                     attribute:NSLayoutAttributeLeft
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeft
-                                                    multiplier:1
-                                                      constant:17]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionTextField
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1
-                                                      constant:-17]];
-    
-    /*
-     * nameTextField
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameTextField
-                                                     attribute:NSLayoutAttributeBottom
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.descriptionTextField
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1
-                                                      constant:-8]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameTextField
-                                                     attribute:NSLayoutAttributeLeft
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.descriptionTextField
-                                                     attribute:NSLayoutAttributeLeft
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.nameTextField
-                                                     attribute:NSLayoutAttributeRight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.descriptionTextField
-                                                     attribute:NSLayoutAttributeRight
-                                                    multiplier:1
-                                                      constant:0]];
-    
-    /*
-     * pictureButton
-     */
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pictureButton
-                                                     attribute:NSLayoutAttributeCenterX
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterX
-                                                    multiplier:1
-                                                      constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pictureButton
-                                                     attribute:NSLayoutAttributeCenterY
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterY
-                                                    multiplier:1
-                                                      constant:0]];
+    [self addConstraints:@[
+                           
+                           /*
+                            * photoView
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.photoView
+                                                        attribute:NSLayoutAttributeTop
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeTop
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.photoView
+                                                        attribute:NSLayoutAttributeBottom
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeBottom
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.photoView
+                                                        attribute:NSLayoutAttributeLeft
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeLeft
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.photoView
+                                                        attribute:NSLayoutAttributeRight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeRight
+                                                       multiplier:1
+                                                         constant:0],
+                           
+                           /*
+                            * descriptionTextField
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.descriptionTextField
+                                                        attribute:NSLayoutAttributeBottom
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeBottom
+                                                       multiplier:1
+                                                         constant:-17],
+                           [NSLayoutConstraint constraintWithItem:self.descriptionTextField
+                                                        attribute:NSLayoutAttributeLeft
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeLeft
+                                                       multiplier:1
+                                                         constant:17],
+                           [NSLayoutConstraint constraintWithItem:self.descriptionTextField
+                                                        attribute:NSLayoutAttributeRight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeRight
+                                                       multiplier:1
+                                                         constant:-17],
+                           
+                           /*
+                            * nameTextField
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.nameTextField
+                                                        attribute:NSLayoutAttributeBottom
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.descriptionTextField
+                                                        attribute:NSLayoutAttributeTop
+                                                       multiplier:1
+                                                         constant:-8],
+                           [NSLayoutConstraint constraintWithItem:self.nameTextField
+                                                        attribute:NSLayoutAttributeLeft
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.descriptionTextField
+                                                        attribute:NSLayoutAttributeLeft
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.nameTextField
+                                                        attribute:NSLayoutAttributeRight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self.descriptionTextField
+                                                        attribute:NSLayoutAttributeRight
+                                                       multiplier:1
+                                                         constant:0],
+                           
+                           /*
+                            * pictureButton
+                            */
+                           
+                           [NSLayoutConstraint constraintWithItem:self.pictureButton
+                                                        attribute:NSLayoutAttributeCenterX
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeCenterX
+                                                       multiplier:1
+                                                         constant:0],
+                           [NSLayoutConstraint constraintWithItem:self.pictureButton
+                                                        attribute:NSLayoutAttributeCenterY
+                                                        relatedBy:NSLayoutRelationEqual
+                                                           toItem:self
+                                                        attribute:NSLayoutAttributeCenterY
+                                                       multiplier:1
+                                                         constant:0]
+                           ]];
     
 }
 
