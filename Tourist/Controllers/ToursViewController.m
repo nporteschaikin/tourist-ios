@@ -22,7 +22,6 @@
 - (id)initWithSession:(Session *)session {
     if (self = [super init]) {
         self.session = session;
-        self.dataSource = [[ToursDataSource alloc] init];
     }
     return self;
 }
@@ -34,14 +33,7 @@
      * Set up table view.
      */
     
-    self.tableView.dataSource = self.dataSource;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
-    /*
-     * Register class w/ reuse identifier.
-     */
-    
-    [self.dataSource registerReuseIdentifiersForTableView:self.tableView];
     
     /*
      * Style table view.

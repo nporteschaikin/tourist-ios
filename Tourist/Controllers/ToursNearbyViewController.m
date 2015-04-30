@@ -55,7 +55,10 @@
     
     if (self.dataSource) {
         [(ToursAPIDataSource *)self.dataSource performRequest];
+        return;
     }
+    
+    [refreshControl endRefreshing];
     
 }
 
