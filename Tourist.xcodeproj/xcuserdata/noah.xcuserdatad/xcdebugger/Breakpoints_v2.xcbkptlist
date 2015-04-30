@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tourist/Controllers/ToursNearbyViewController.h"
-            timestampString = "449500124.70333"
+            timestampString = "452027949.126316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
             landmarkName = "@interface ToursNearbyViewController"
             landmarkType = "2">
          </BreakpointContent>

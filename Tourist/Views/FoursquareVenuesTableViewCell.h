@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FoursquareVenueView.h"
 
 @interface FoursquareVenuesTableViewCell : UITableViewCell
 
-@property (strong, nonatomic, readonly) FoursquareVenueView *venueView;
+@property (strong, nonatomic, readonly) UILabel *nameLabel;
+@property (strong, nonatomic, readonly) UILabel *categoryLabel;
+@property (strong, nonatomic, readonly) UILabel *addressLabel;
 
 @end

@@ -7,76 +7,183 @@
 //
 
 #import "ToursTableViewCell.h"
+#import "Constants.h"
 
 @interface ToursTableViewCell ()
 
-@property (strong, nonatomic) TourHeaderView *headerView;
+@property (strong, nonatomic) UILabel *nameLabel;
+@property (strong, nonatomic) UILabel *descriptionLabel;
+@property (strong, nonatomic) UILabel *userNameLabel;
+@property (strong, nonatomic) UILabel *pinsLabel;
 
 @end
 
 @implementation ToursTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self.contentView addSubview:self.headerView];
-        [self setupConstraints];
+- (id)init {
+    if (self = [super init]) {
+        [self setupView];
     }
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupView];
+    }
+    return self;
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setupView];
+    }
+    return self;
+}
+
+- (void)setupView {
     
     /*
-     * Set layout.
+     * Add background color.
      */
     
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
+    self.backgroundColor = [UIColor blackColor];
+    
+    /*
+     * Add subviews.
+     */
+    
+    [self.contentView addSubview:self.nameLabel];
+    [self.contentView addSubview:self.descriptionLabel];
+    [self.contentView addSubview:self.pinsLabel];
+    
+    /*
+     * Update constraints.
+     */
+    
+    [self setupConstraints];
+    
 }
 
 - (void)setupConstraints {
     
-    /*
-     * venueView constraints
-     */
+    [self.contentView addConstraints:@[
+                                       
+                                       /*
+                                        * nameLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1
+                                                                     constant:17],
+                                       [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:17],
+                                       [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:-17],
+                                       
+                                       /*
+                                        * descriptionLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:8],
+                                       [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       
+                                       /*
+                                        * pinLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.pinsLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:-17],
+                                       [NSLayoutConstraint constraintWithItem:self.pinsLabel
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:-17]
+                                       ]];
     
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView
-                                                                 attribute:NSLayoutAttributeRight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeRight
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeTop
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.headerView
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:0]];
 }
 
-- (TourHeaderView *)headerView {
-    if (!_headerView) {
-        _headerView = [[TourHeaderView alloc] init];
-        _headerView.translatesAutoresizingMaskIntoConstraints = NO;
+- (UILabel *)nameLabel {
+    if (!_nameLabel) {
+        _nameLabel = [[UILabel alloc] init];
+        _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _nameLabel.textColor = [UIColor whiteColor];
+        _nameLabel.font = [UIFont fontWithName:TouristDefaultBoldFontName
+                                          size:16.0f];
     }
-    return _headerView;
+    return _nameLabel;
+}
+
+- (UILabel *)descriptionLabel {
+    if (!_descriptionLabel) {
+        _descriptionLabel = [[UILabel alloc] init];
+        _descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _descriptionLabel.textColor = [UIColor whiteColor];
+        _descriptionLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                                 size:14.0f];
+    }
+    return _descriptionLabel;
+}
+
+- (UILabel *)pinsLabel {
+    if (!_pinsLabel) {
+        _pinsLabel = [[UILabel alloc] init];
+        _pinsLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _pinsLabel.textColor = [UIColor whiteColor];
+        _pinsLabel.font = [UIFont fontWithName:TouristDefaultFontName
+                                          size:12.0f];
+    }
+    return _pinsLabel;
+}
+
+- (void)setPinsCount:(NSNumber *)pinsCount {
+    _pinsCount = pinsCount;
+    
+    /*
+     * Set pins label.
+     */
+    
+    self.pinsLabel.text = [NSString stringWithFormat:@"%@ pins", _pinsCount];
 }
 
 @end

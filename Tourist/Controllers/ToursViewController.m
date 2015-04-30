@@ -13,41 +13,41 @@
 
 @interface ToursViewController ()
 
-@property (strong, nonatomic) NSString *reuseIdentifier;
 @property (strong, nonatomic) Session *session;
 
 @end
 
 @implementation ToursViewController
 
-NSString * const toursViewControllerReuseIdentifier = @"toursViewControllerReuseIdentifier";
-
-- (id)init {
+- (id)initWithSession:(Session *)session {
     if (self = [super init]) {
-        self.reuseIdentifier = toursViewControllerReuseIdentifier;
-        
-        /*
-         * Register class w/ reuse identifier.
-         */
-        
-        [self.tableView registerClass:[ToursTableViewCell class]
-               forCellReuseIdentifier:self.reuseIdentifier];
-        
-        /*
-         * Style table view.
-         */
-        
-        self.tableView.separatorColor = [UIColor clearColor];
-        
+        self.session = session;
+        self.dataSource = [[ToursDataSource alloc] init];
     }
     return self;
 }
 
-- (id)initWithSession:(Session *)session {
-    if (self = [self init]) {
-        self.session = session;
-    }
-    return self;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    /*
+     * Set up table view.
+     */
+    
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    /*
+     * Register class w/ reuse identifier.
+     */
+    
+    [self.dataSource registerReuseIdentifiersForTableView:self.tableView];
+    
+    /*
+     * Style table view.
+     */
+    
+    self.tableView.separatorColor = [UIColor clearColor];
 }
 
 /*

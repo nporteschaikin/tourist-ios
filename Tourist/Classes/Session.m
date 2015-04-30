@@ -12,7 +12,7 @@
 
 @interface Session () <APIRequestDelegate>
 
-@property (strong, nonatomic) NSString *sessionToken;
+@property (copy, nonatomic) NSString *sessionToken;
 @property (strong, nonatomic) NSDictionary *user;
 @property (strong, nonatomic) APIRequest *request;
 

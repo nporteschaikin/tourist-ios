@@ -30,19 +30,21 @@
 
 @implementation PinEditorViewController
 
-NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControllerReuseIdentifier";
-
 - (id)init {
     if (self = [super init]) {
-        self.view.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:self.navigationBar];
-        [self.view addSubview:self.searchBar];
-        [self.view addSubview:self.tableView];
-        [self.view addSubview:self.detailsEditorView];
-        [self setupConstraints];
-        [self setupGestureRecognizers];
+        [self setupView];
     }
     return self;
+}
+
+- (void)setupView {
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.navigationBar];
+    [self.view addSubview:self.searchBar];
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.detailsEditorView];
+    [self setupConstraints];
+    [self setupGestureRecognizers];
 }
 
 - (void)setupConstraints {
@@ -170,6 +172,14 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
     [super viewDidLoad];
     
     /*
+     * Set up table view.
+     */
+    
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
+    
+    /*
      * Get latest location
      */
     
@@ -210,6 +220,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
         /*
          * Create navigation item
          */
+        
         UINavigationItem *navigationItem = [[UINavigationItem alloc] init];
         navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                          target:self
@@ -231,10 +242,7 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
     if (!_tableView) {
         _tableView = [[UITableView alloc] init];
         _tableView.translatesAutoresizingMaskIntoConstraints = NO;
-        _tableView.dataSource = self.dataSource;
         _tableView.delegate = self;
-        [_tableView registerClass:[FoursquareVenuesTableViewCell class]
-           forCellReuseIdentifier:pinEditorViewControllerReuseIdentifier];
     }
     return _tableView;
 }
@@ -249,9 +257,9 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
 
 - (FoursquareVenuesDataSource *)dataSource {
     if (!_dataSource) {
-        _dataSource = [[FoursquareVenuesDataSource alloc] initWithFoursquareAPIRequest:self.request
-                                                                       reuseIdentifier:pinEditorViewControllerReuseIdentifier];
+        _dataSource = [[FoursquareVenuesDataSource alloc] initWithFoursquareAPIRequest:self.request];
         _dataSource.delegate = self;
+        [_dataSource registerReuseIdentifiersForTableView:self.tableView];
     }
     return _dataSource;
 }
@@ -426,10 +434,6 @@ NSString * const pinEditorViewControllerReuseIdentifier = @"pinEditorViewControl
 /*
  * Table view delegate
  */
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewAutomaticDimension;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     

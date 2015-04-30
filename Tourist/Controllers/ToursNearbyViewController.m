@@ -54,7 +54,7 @@
      */
     
     if (self.dataSource) {
-        [self.dataSource performRequest];
+        [(ToursAPIDataSource *)self.dataSource performRequest];
     }
     
 }
@@ -103,16 +103,18 @@
      * Set up data source.
      */
     
-    self.dataSource = [[ToursAPIDataSource alloc] initWithSessionAPIRequest:request
-                                                            reuseIdentifier:self.reuseIdentifier];
-    self.dataSource.delegate = self;
-    self.tableView.dataSource = self.dataSource;
+    ToursAPIDataSource *dataSource = [[ToursAPIDataSource alloc] initWithAPIRequest:request];
+    dataSource.delegate = self;
+    [dataSource registerReuseIdentifiersForTableView:self.tableView];
+    
+    self.dataSource = dataSource;
+    self.tableView.dataSource = dataSource;
     
     /*
      * Perform fetch.
      */
     
-    [self.dataSource performRequest];
+    [dataSource performRequest];
     
     /*
      * Stop updating location.

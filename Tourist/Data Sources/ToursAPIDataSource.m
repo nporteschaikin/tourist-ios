@@ -16,9 +16,8 @@
 
 @implementation ToursAPIDataSource
 
-- (id)initWithSessionAPIRequest:(TouristSessionAPIRequest *)request
-                reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
+- (instancetype)initWithAPIRequest:(TouristSessionAPIRequest *)request {
+    if (self = [super init]) {
         self.request = request;
         self.request.delegate = self;
     }

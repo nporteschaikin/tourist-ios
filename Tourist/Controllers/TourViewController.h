@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TouristSessionAPIRequest.h"
 
-@interface TourViewController : UIViewController
+@interface TourViewController : UITableViewController
 
 - (id)initWithAPIRequest:(TouristSessionAPIRequest *)request;
 

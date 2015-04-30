@@ -19,12 +19,11 @@
 
 @interface FoursquareVenuesDataSource : NSObject <UITableViewDataSource>
 
-@property (strong, nonatomic) id<FoursquareVenuesDataSourceDelegate> delegate;
+@property (weak, nonatomic) id<FoursquareVenuesDataSourceDelegate> delegate;
 @property (strong, nonatomic, readonly) NSArray *venues;
 
-- (id)initWithFoursquareAPIRequest:(FoursquareAPIRequest *)request
-                   reuseIdentifier:(NSString *)reuseIdentifier;
-
+- (id)initWithFoursquareAPIRequest:(FoursquareAPIRequest *)request;
+- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView;
 - (void)performRequest;
 
 @end
