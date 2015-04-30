@@ -9,19 +9,13 @@
 #import "ToursDataSource.h"
 #import "ToursTableViewCell.h"
 
-@interface ToursDataSource ()
-
-@property (strong, nonatomic) NSString *reuseIdentifier;
-
-@end
+static NSString * const ToursTableViewCellReuseIdentifier = @"ToursTableViewCellReuseIdentifier";
 
 @implementation ToursDataSource
 
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super init]) {
-        self.reuseIdentifier = reuseIdentifier;
-    }
-    return self;
+- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView {
+    [tableView registerClass:[ToursTableViewCell class]
+      forCellReuseIdentifier:ToursTableViewCellReuseIdentifier];
 }
 
 /*
@@ -29,7 +23,7 @@
  */
 
 - (ToursTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ToursTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
+    ToursTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ToursTableViewCellReuseIdentifier];
     
     /*
      * Get tour.
@@ -41,9 +35,9 @@
      * Set up cell.
      */
     
-    cell.headerView.nameLabel.text = [tour objectForKey:@"name"];
-    cell.headerView.descriptionLabel.text = [tour objectForKey:@"description"];
-    cell.headerView.pinsCount = [NSNumber numberWithInteger:[(NSArray *)[tour objectForKey:@"pins"] count]];
+    cell.nameLabel.text = [tour objectForKey:@"name"];
+    cell.descriptionLabel.text = [tour objectForKey:@"description"];
+    cell.pinsCount = [NSNumber numberWithInteger:[(NSArray *)[tour objectForKey:@"pins"] count]];
     
     /*
      * Update constraints.

@@ -11,22 +11,27 @@
 
 @interface FoursquareVenuesDataSource () <APIRequestDelegate>
 
-@property (strong, nonatomic) NSString *reuseIdentifier;
 @property (strong, nonatomic) FoursquareAPIRequest *request;
-@property (strong, nonatomic) NSArray *venues;
+@property (copy, nonatomic) NSArray *venues;
 
 @end
 
 @implementation FoursquareVenuesDataSource
 
-- (id)initWithFoursquareAPIRequest:(FoursquareAPIRequest *)request
-                   reuseIdentifier:(NSString *)reuseIdentifier {
+static NSString * const FoursquareVenuesTableViewCellReuseIdentifier = @"FoursquareVenuesTableViewCellReuseIdentifier";
+
+- (id)initWithFoursquareAPIRequest:(FoursquareAPIRequest *)request {
     if (self = [super init]) {
         self.request = request;
         self.request.delegate = self;
         self.venues = [NSArray array];
     }
     return self;
+}
+
+- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView {
+    [tableView registerClass:[FoursquareVenuesTableViewCell class]
+      forCellReuseIdentifier:FoursquareVenuesTableViewCellReuseIdentifier];
 }
 
 - (void)performRequest {
@@ -81,20 +86,16 @@
  */
 
 - (FoursquareVenuesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FoursquareVenuesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
-    if (cell == nil) {
-        cell = [[FoursquareVenuesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                    reuseIdentifier:self.reuseIdentifier];
-    }
+    FoursquareVenuesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FoursquareVenuesTableViewCellReuseIdentifier];
     
     /*
      * Populate cells.
      */
     
     NSDictionary *venue = [self.venues objectAtIndex:indexPath.row];
-    cell.venueView.nameLabel.text = [venue objectForKey:@"name"];
-    cell.venueView.addressLabel.text = [[[venue objectForKey:@"location"] objectForKey:@"formattedAddress"] componentsJoinedByString:@", "];
-    cell.venueView.categoryLabel.text = [[[venue objectForKey:@"categories"] firstObject] objectForKey:@"name"];
+    cell.nameLabel.text = [venue objectForKey:@"name"];
+    cell.addressLabel.text = [[[venue objectForKey:@"location"] objectForKey:@"formattedAddress"] componentsJoinedByString:@", "];
+    cell.categoryLabel.text = [[[venue objectForKey:@"categories"] firstObject] objectForKey:@"name"];
     
     /*
      * Update constraints.

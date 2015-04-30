@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TourHeaderView.h"
 
 @interface ToursTableViewCell : UITableViewCell
 
-@property (strong, nonatomic, readonly) TourHeaderView *headerView;
+@property (strong, nonatomic, readonly) UILabel *nameLabel;
+@property (strong, nonatomic, readonly) UILabel *descriptionLabel;
+@property (strong, nonatomic, readonly) UILabel *userNameLabel;
+@property (strong, nonatomic) NSNumber *pinsCount;
 
 @end

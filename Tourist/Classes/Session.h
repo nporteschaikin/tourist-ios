@@ -22,7 +22,7 @@
 @interface Session : NSObject
 
 @property (strong, nonatomic) id<SessionDelegate> delegate;
-@property (strong, nonatomic, readonly) NSString *sessionToken;
+@property (copy, nonatomic, readonly) NSString *sessionToken;
 @property (strong, nonatomic, readonly) NSDictionary *user;
 
 - (id)initWithFacebookAccessToken:(NSString *)facebookAccessToken;

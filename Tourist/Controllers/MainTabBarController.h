@@ -17,7 +17,7 @@
 
 @interface MainTabBarController : UITabBarController
 
-@property (strong, nonatomic) id<MainTabBarControllerDelegate> theDelegate;
+@property (weak, nonatomic) id<MainTabBarControllerDelegate> theDelegate;
 
 - (id)initWithSession:(Session *)session;
 

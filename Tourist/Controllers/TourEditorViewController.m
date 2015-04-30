@@ -16,7 +16,7 @@
 #import "UIColor+Tourist.h"
 #import "Constants.h"
 
-@interface TourEditorViewController () <UINavigationControllerDelegate, PinEditorViewControllerDelegate, APIRequestDelegate, PinsDataSourceDelegate, TourEditorHeaderViewDelegate, UIImagePickerControllerDelegate>
+@interface TourEditorViewController () <UINavigationControllerDelegate, PinEditorViewControllerDelegate, APIRequestDelegate, TourEditorHeaderViewDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) Session *session;
 @property (strong, nonatomic) PinEditorViewController *pinEditorViewController;
@@ -32,38 +32,54 @@
 
 @implementation TourEditorViewController
 
-NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorViewControllerReuseIdentifier";
-
 - (id)initWithSession:(Session *)session {
     if (self = [super init]) {
         self.session = session;
-        
-        /*
-         * Style local view
-         */
-        
-        self.view.backgroundColor = [UIColor whiteColor];
-        
-        /*
-         * Add subviews
-         */
-        
-        [self.view addSubview:self.headerView];
-        [self.view insertSubview:self.tableView
-                    aboveSubview:self.headerView];
-        [self.view insertSubview:self.toolbar
-                    aboveSubview:self.headerView];
-        [self.view addSubview:self.saveButton];
-        
-        /*
-         * Setup constraints & gesture 
-         * recognizers.
-         */
-        
-        [self setupConstraints];
-        [self setupGestureRecognizers];
+        [self setupView];
     }
     return self;
+}
+
+- (void)setupView {
+    
+    /*
+     * Style local view
+     */
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    /*
+     * Add subviews
+     */
+    
+    [self.view addSubview:self.headerView];
+    [self.view insertSubview:self.tableView
+                aboveSubview:self.headerView];
+    [self.view insertSubview:self.toolbar
+                aboveSubview:self.headerView];
+    [self.view addSubview:self.saveButton];
+    
+    /*
+     * Setup constraints & gesture
+     * recognizers.
+     */
+    
+    [self setupConstraints];
+    [self setupGestureRecognizers];
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    /*
+     * Setup table view
+     */
+    
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;
+    
 }
 
 - (void)setupConstraints {
@@ -259,16 +275,14 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
         _tableView = [[UITableView alloc] init];
         _tableView.translatesAutoresizingMaskIntoConstraints = NO;
         _tableView.dataSource = self.dataSource;
-        [_tableView registerClass:[PinsEditorTableViewCell class]
-           forCellReuseIdentifier:tourPinsEditorViewControllerReuseIdentifier];
     }
     return _tableView;
 }
 
 - (PinsDataSource *)dataSource {
     if (!_dataSource) {
-        _dataSource = [[PinsDataSource alloc] initWithReuseIdentifier:tourPinsEditorViewControllerReuseIdentifier];
-        _dataSource.delegate = self;
+        _dataSource = [[PinsDataSource alloc] init];
+        [_dataSource registerReuseIdentifiersForTableView:self.tableView];
     }
     return _dataSource;
 }
@@ -456,23 +470,6 @@ NSString * const tourPinsEditorViewControllerReuseIdentifier = @"tourPinsEditorV
 
 - (void)APIRequest:(APIRequest *)APIRequest error:(NSError *)error {
 
-}
-
-/*
- * PinDataSourceDelegate
- */
-
-- (void)configureCell:(PinsEditorTableViewCell *)cell forPin:(NSDictionary *)pin {
-    cell.nameLabel.text = [pin objectForKey:@"name"];
-    cell.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
-    cell.categoryLabel.text = [pin objectForKey:@"category"];
-    
-    NSString *description = [pin objectForKey:@"description"];
-    if (description) {
-        cell.descriptionLabel.text = description;
-    } else {
-        cell.descriptionLabel.text = nil;
-    }
 }
 
 /*

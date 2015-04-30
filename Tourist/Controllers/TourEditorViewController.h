@@ -19,7 +19,7 @@
 
 @interface TourEditorViewController : UIViewController
 
-@property (strong, nonatomic) id<TourEditorViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<TourEditorViewControllerDelegate> delegate;
 
 - (id)initWithSession:(Session *)session;
 

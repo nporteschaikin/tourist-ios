@@ -7,20 +7,22 @@
 //
 
 #import "PinsDataSource.h"
-
-@interface PinsDataSource ()
-
-@property (strong, nonatomic) NSString *reuseIdentifier;
-
-@end
+#import "PinsTableViewCell.h"
 
 @implementation PinsDataSource
 
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
+static NSString * const PinsTableViewCellReuseIdentifier = @"PinsTableViewCellReuseIdentifier";
+
+- (id)initWithPins:(NSArray *)pins {
     if (self = [super init]) {
-        self.reuseIdentifier = reuseIdentifier;
+        self.pins = pins;
     }
     return self;
+}
+
+- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView {
+    [tableView registerClass:[PinsTableViewCell class]
+      forCellReuseIdentifier:PinsTableViewCellReuseIdentifier];
 }
 
 /*
@@ -28,15 +30,23 @@
  */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.reuseIdentifier];
+    PinsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PinsTableViewCellReuseIdentifier];
     
     /*
      * Populate cells.
      */
     
     NSDictionary *pin = [self.pins objectAtIndex:indexPath.row];
-    [self.delegate configureCell:cell
-                          forPin:pin];
+    cell.nameLabel.text = [pin objectForKey:@"name"];
+    cell.addressLabel.text = [[pin objectForKey:@"address"] componentsJoinedByString:@", "];
+    cell.categoryLabel.text = [pin objectForKey:@"category"];
+    
+    NSString *description = [pin objectForKey:@"description"];
+    if (description) {
+        cell.descriptionLabel.text = description;
+    } else {
+        cell.descriptionLabel.text = nil;
+    }
     
     /*
      * Update constraints.

@@ -8,19 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class ToursDataSource;
-
-@protocol ToursDataSourceDelegate
-
-- (void)toursDataSourceDidUpdateTours:(ToursDataSource *)toursDataSource;
-
-@end
-
 @interface ToursDataSource : NSObject <UITableViewDataSource>
 
-@property (strong, nonatomic) id<ToursDataSourceDelegate> delegate;
-@property (strong, nonatomic) NSArray *tours;
+@property (copy, nonatomic) NSArray *tours;
 
-- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+- (void)registerReuseIdentifiersForTableView:(UITableView *)tableView;
 
 @end

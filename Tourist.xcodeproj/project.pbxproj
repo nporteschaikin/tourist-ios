@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1495BC1AF14F23006B0114 /* TourDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1495BB1AF14F23006B0114 /* TourDataSource.m */; };
+		4F1495BF1AF15CC7006B0114 /* FoursquareVenueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1495BE1AF15CC7006B0114 /* FoursquareVenueView.m */; };
 		4F9397051AC9C961002E2512 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9396F41AC9C961002E2512 /* LoginViewController.m */; };
 		4F9397061AC9C961002E2512 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9396F61AC9C961002E2512 /* MainTabBarController.m */; };
 		4F9397071AC9C961002E2512 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9396F81AC9C961002E2512 /* MainViewController.m */; };
@@ -28,15 +30,11 @@
 		4F9397311AC9C9BB002E2512 /* ToursTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F93972D1AC9C9BB002E2512 /* ToursTableViewCell.m */; };
 		4F9397341AC9C9E3002E2512 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9397331AC9C9E3002E2512 /* Constants.m */; };
 		4FC2A0E61ACAD1C100AA0E3B /* TourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2A0E51ACAD1C100AA0E3B /* TourViewController.m */; };
-		4FC2A0E91ACB103200AA0E3B /* TourRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2A0E81ACB103200AA0E3B /* TourRowView.m */; };
-		4FC2A0EF1ACB128900AA0E3B /* RowsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2A0EE1ACB128900AA0E3B /* RowsView.m */; };
 		4FC2A0F51ACB372700AA0E3B /* PinsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2A0F41ACB372700AA0E3B /* PinsTableViewCell.m */; };
-		4FD5F3BF1AC9FF770010C30E /* FoursquareVenueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5F3BE1AC9FF770010C30E /* FoursquareVenueView.m */; };
 		4FDD7C2A1AC9D88800DBF93A /* PinDetailsEditorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD7C291AC9D88800DBF93A /* PinDetailsEditorView.m */; };
 		4FDD7C2D1AC9ECCC00DBF93A /* FoursquareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD7C2C1AC9ECCC00DBF93A /* FoursquareHelper.m */; };
 		4FDD7C331AC9F73900DBF93A /* PinsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD7C321AC9F73900DBF93A /* PinsDataSource.m */; };
 		4FDD7C361AC9F77F00DBF93A /* PinsEditorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FDD7C351AC9F77F00DBF93A /* PinsEditorTableViewCell.m */; };
-		4FFEC6E01ACC1D1F008625EE /* PinsRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFEC6DF1ACC1D1F008625EE /* PinsRowView.m */; };
 		4FFEC6E71ACC364B008625EE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEC6E51ACC360D008625EE /* CoreText.framework */; };
 		4FFEC6E91ACC365D008625EE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEC6E81ACC365D008625EE /* MobileCoreServices.framework */; };
 		4FFEC6EA1ACC3677008625EE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEC6E21ACC35DC008625EE /* AssetsLibrary.framework */; };
@@ -54,7 +52,7 @@
 		E44DBE361AC86E9F007E90F3 /* AppearanceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E44DBE351AC86E9F007E90F3 /* AppearanceHelper.m */; };
 		E44DBE381AC86F42007E90F3 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E44DBE371AC86F42007E90F3 /* Launch Screen.xib */; };
 		E4999FC01ACA114B001B107B /* TourEditorHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4999FBF1ACA114B001B107B /* TourEditorHeaderView.m */; };
-		E4999FC31ACA46FC001B107B /* TourHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4999FC21ACA46FC001B107B /* TourHeaderView.m */; };
+		E4999FC31ACA46FC001B107B /* TourHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4999FC21ACA46FC001B107B /* TourHeaderTableViewCell.m */; };
 		E4A9943A1AC8DC48008322F3 /* UIColor+Tourist.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A994391AC8DC48008322F3 /* UIColor+Tourist.m */; };
 		E4BDBE331AC8E75F00A6D827 /* UIButton+Tourist.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BDBE321AC8E75F00A6D827 /* UIButton+Tourist.m */; };
 		E4BDBE3E1AC8F44900A6D827 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BDBE3C1AC8F43100A6D827 /* MapKit.framework */; };
@@ -72,6 +70,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F1495BA1AF14F23006B0114 /* TourDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourDataSource.h; sourceTree = "<group>"; };
+		4F1495BB1AF14F23006B0114 /* TourDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourDataSource.m; sourceTree = "<group>"; };
+		4F1495BD1AF15CC7006B0114 /* FoursquareVenueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueView.h; sourceTree = "<group>"; };
+		4F1495BE1AF15CC7006B0114 /* FoursquareVenueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueView.m; sourceTree = "<group>"; };
 		4F9396F31AC9C961002E2512 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4F9396F41AC9C961002E2512 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4F9396F51AC9C961002E2512 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
@@ -114,14 +116,8 @@
 		4F9397331AC9C9E3002E2512 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		4FC2A0E41ACAD1C100AA0E3B /* TourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourViewController.h; sourceTree = "<group>"; };
 		4FC2A0E51ACAD1C100AA0E3B /* TourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourViewController.m; sourceTree = "<group>"; };
-		4FC2A0E71ACB103200AA0E3B /* TourRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourRowView.h; sourceTree = "<group>"; };
-		4FC2A0E81ACB103200AA0E3B /* TourRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourRowView.m; sourceTree = "<group>"; };
-		4FC2A0ED1ACB128900AA0E3B /* RowsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowsView.h; sourceTree = "<group>"; };
-		4FC2A0EE1ACB128900AA0E3B /* RowsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowsView.m; sourceTree = "<group>"; };
 		4FC2A0F31ACB372700AA0E3B /* PinsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinsTableViewCell.h; sourceTree = "<group>"; };
 		4FC2A0F41ACB372700AA0E3B /* PinsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinsTableViewCell.m; sourceTree = "<group>"; };
-		4FD5F3BD1AC9FF770010C30E /* FoursquareVenueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueView.h; sourceTree = "<group>"; };
-		4FD5F3BE1AC9FF770010C30E /* FoursquareVenueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueView.m; sourceTree = "<group>"; };
 		4FDD7C281AC9D88800DBF93A /* PinDetailsEditorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinDetailsEditorView.h; sourceTree = "<group>"; };
 		4FDD7C291AC9D88800DBF93A /* PinDetailsEditorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinDetailsEditorView.m; sourceTree = "<group>"; };
 		4FDD7C2B1AC9ECCC00DBF93A /* FoursquareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareHelper.h; sourceTree = "<group>"; };
@@ -130,8 +126,6 @@
 		4FDD7C321AC9F73900DBF93A /* PinsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinsDataSource.m; sourceTree = "<group>"; };
 		4FDD7C341AC9F77F00DBF93A /* PinsEditorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinsEditorTableViewCell.h; sourceTree = "<group>"; };
 		4FDD7C351AC9F77F00DBF93A /* PinsEditorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinsEditorTableViewCell.m; sourceTree = "<group>"; };
-		4FFEC6DE1ACC1D1F008625EE /* PinsRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinsRowView.h; sourceTree = "<group>"; };
-		4FFEC6DF1ACC1D1F008625EE /* PinsRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinsRowView.m; sourceTree = "<group>"; };
 		4FFEC6E21ACC35DC008625EE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		4FFEC6E51ACC360D008625EE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4FFEC6E81ACC365D008625EE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -157,8 +151,8 @@
 		E44DBE371AC86F42007E90F3 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		E4999FBE1ACA114B001B107B /* TourEditorHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourEditorHeaderView.h; sourceTree = "<group>"; };
 		E4999FBF1ACA114B001B107B /* TourEditorHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourEditorHeaderView.m; sourceTree = "<group>"; };
-		E4999FC11ACA46FC001B107B /* TourHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourHeaderView.h; sourceTree = "<group>"; };
-		E4999FC21ACA46FC001B107B /* TourHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourHeaderView.m; sourceTree = "<group>"; };
+		E4999FC11ACA46FC001B107B /* TourHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourHeaderTableViewCell.h; sourceTree = "<group>"; };
+		E4999FC21ACA46FC001B107B /* TourHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourHeaderTableViewCell.m; sourceTree = "<group>"; };
 		E4A994381AC8DC48008322F3 /* UIColor+Tourist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Tourist.h"; sourceTree = "<group>"; };
 		E4A994391AC8DC48008322F3 /* UIColor+Tourist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Tourist.m"; sourceTree = "<group>"; };
 		E4BDBE311AC8E75F00A6D827 /* UIButton+Tourist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Tourist.h"; sourceTree = "<group>"; };
@@ -355,8 +349,6 @@
 		E4A9941A1AC8A0CB008322F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4F9397261AC9C9BB002E2512 /* FoursquareVenuesTableViewCell.h */,
-				4F9397271AC9C9BB002E2512 /* FoursquareVenuesTableViewCell.m */,
 				4F9397281AC9C9BB002E2512 /* PinsMapView.h */,
 				4F9397291AC9C9BB002E2512 /* PinsMapView.m */,
 				4F93972A1AC9C9BB002E2512 /* TouristTextField.h */,
@@ -367,20 +359,16 @@
 				4FDD7C291AC9D88800DBF93A /* PinDetailsEditorView.m */,
 				4FDD7C341AC9F77F00DBF93A /* PinsEditorTableViewCell.h */,
 				4FDD7C351AC9F77F00DBF93A /* PinsEditorTableViewCell.m */,
-				4FD5F3BD1AC9FF770010C30E /* FoursquareVenueView.h */,
-				4FD5F3BE1AC9FF770010C30E /* FoursquareVenueView.m */,
 				E4999FBE1ACA114B001B107B /* TourEditorHeaderView.h */,
 				E4999FBF1ACA114B001B107B /* TourEditorHeaderView.m */,
-				E4999FC11ACA46FC001B107B /* TourHeaderView.h */,
-				E4999FC21ACA46FC001B107B /* TourHeaderView.m */,
-				4FC2A0E71ACB103200AA0E3B /* TourRowView.h */,
-				4FC2A0E81ACB103200AA0E3B /* TourRowView.m */,
-				4FC2A0ED1ACB128900AA0E3B /* RowsView.h */,
-				4FC2A0EE1ACB128900AA0E3B /* RowsView.m */,
+				E4999FC11ACA46FC001B107B /* TourHeaderTableViewCell.h */,
+				E4999FC21ACA46FC001B107B /* TourHeaderTableViewCell.m */,
 				4FC2A0F31ACB372700AA0E3B /* PinsTableViewCell.h */,
 				4FC2A0F41ACB372700AA0E3B /* PinsTableViewCell.m */,
-				4FFEC6DE1ACC1D1F008625EE /* PinsRowView.h */,
-				4FFEC6DF1ACC1D1F008625EE /* PinsRowView.m */,
+				4F1495BD1AF15CC7006B0114 /* FoursquareVenueView.h */,
+				4F1495BE1AF15CC7006B0114 /* FoursquareVenueView.m */,
+				4F9397261AC9C9BB002E2512 /* FoursquareVenuesTableViewCell.h */,
+				4F9397271AC9C9BB002E2512 /* FoursquareVenuesTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +384,8 @@
 				4F9397131AC9C980002E2512 /* ToursDataSource.m */,
 				4FDD7C311AC9F73900DBF93A /* PinsDataSource.h */,
 				4FDD7C321AC9F73900DBF93A /* PinsDataSource.m */,
+				4F1495BA1AF14F23006B0114 /* TourDataSource.h */,
+				4F1495BB1AF14F23006B0114 /* TourDataSource.m */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -522,19 +512,17 @@
 				4F93970D1AC9C961002E2512 /* ToursViewController.m in Sources */,
 				E44DBE0C1AC86D91007E90F3 /* AppDelegate.m in Sources */,
 				4F9397301AC9C9BB002E2512 /* TouristTextField.m in Sources */,
-				4FC2A0E91ACB103200AA0E3B /* TourRowView.m in Sources */,
 				4F9397211AC9C99B002E2512 /* APIRequest.m in Sources */,
 				4FDD7C2A1AC9D88800DBF93A /* PinDetailsEditorView.m in Sources */,
 				4F9397151AC9C980002E2512 /* ToursAPIDataSource.m in Sources */,
 				4FDD7C331AC9F73900DBF93A /* PinsDataSource.m in Sources */,
-				4FC2A0EF1ACB128900AA0E3B /* RowsView.m in Sources */,
 				4F9397061AC9C961002E2512 /* MainTabBarController.m in Sources */,
-				4FFEC6E01ACC1D1F008625EE /* PinsRowView.m in Sources */,
 				4F9397251AC9C99B002E2512 /* TouristSessionAPIRequest.m in Sources */,
 				4FC2A0E61ACAD1C100AA0E3B /* TourViewController.m in Sources */,
 				4F9397071AC9C961002E2512 /* MainViewController.m in Sources */,
 				E4BDBE331AC8E75F00A6D827 /* UIButton+Tourist.m in Sources */,
 				4FDD7C2D1AC9ECCC00DBF93A /* FoursquareHelper.m in Sources */,
+				4F1495BF1AF15CC7006B0114 /* FoursquareVenueView.m in Sources */,
 				4F9397051AC9C961002E2512 /* LoginViewController.m in Sources */,
 				4F9397311AC9C9BB002E2512 /* ToursTableViewCell.m in Sources */,
 				4F93972F1AC9C9BB002E2512 /* PinsMapView.m in Sources */,
@@ -542,15 +530,15 @@
 				4F9397141AC9C980002E2512 /* FoursquareVenuesDataSource.m in Sources */,
 				E4999FC01ACA114B001B107B /* TourEditorHeaderView.m in Sources */,
 				E44DBE361AC86E9F007E90F3 /* AppearanceHelper.m in Sources */,
+				4F1495BC1AF14F23006B0114 /* TourDataSource.m in Sources */,
 				4F9397161AC9C980002E2512 /* ToursDataSource.m in Sources */,
 				4F9397231AC9C99B002E2512 /* Session.m in Sources */,
 				4F93972E1AC9C9BB002E2512 /* FoursquareVenuesTableViewCell.m in Sources */,
 				4F9397081AC9C961002E2512 /* PinEditorViewController.m in Sources */,
 				4F9397221AC9C99B002E2512 /* FoursquareAPIRequest.m in Sources */,
 				E4A9943A1AC8DC48008322F3 /* UIColor+Tourist.m in Sources */,
-				E4999FC31ACA46FC001B107B /* TourHeaderView.m in Sources */,
+				E4999FC31ACA46FC001B107B /* TourHeaderTableViewCell.m in Sources */,
 				4F93970C1AC9C961002E2512 /* ToursNearbyViewController.m in Sources */,
-				4FD5F3BF1AC9FF770010C30E /* FoursquareVenueView.m in Sources */,
 				E44DBE091AC86D91007E90F3 /* main.m in Sources */,
 				4F9397241AC9C99B002E2512 /* TouristAPIRequest.m in Sources */,
 				4FDD7C361AC9F77F00DBF93A /* PinsEditorTableViewCell.m in Sources */,

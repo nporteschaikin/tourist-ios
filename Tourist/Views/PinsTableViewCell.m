@@ -19,140 +19,158 @@
 
 @implementation PinsTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self.contentView addSubview:self.nameLabel];
-        [self.contentView addSubview:self.categoryLabel];
-        [self.contentView addSubview:self.addressLabel];
-        [self.contentView addSubview:self.descriptionLabel];
-        [self setupConstraints];
+- (id)init {
+    if (self = [super init]) {
+        [self setupView];
     }
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    
-    /*
-     * Set layout.
-     */
-    
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self setupView];
+    }
+    return self;
+}
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setupView];
+    }
+    return self;
+}
+
+- (void)setupView {
+    [self.contentView addSubview:self.nameLabel];
+    [self.contentView addSubview:self.categoryLabel];
+    [self.contentView addSubview:self.addressLabel];
+    [self.contentView addSubview:self.descriptionLabel];
+    [self setupConstraints];
 }
 
 - (void)setupConstraints {
     
+    [self.contentView addConstraints:@[
+                                       
+                                       /*
+                                        * nameLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1
+                                                                     constant:17],
+                                       [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:17],
+                                       [NSLayoutConstraint constraintWithItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:-17],
+                                       /*
+                                        * categoryLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.categoryLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.categoryLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.categoryLabel
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:8],
+                                       
+                                       /*
+                                        * addressLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.addressLabel
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.categoryLabel
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:8],
+                                       
+                                       /*
+                                        * descriptionLabel
+                                        */
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.addressLabel
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:8],
+                                       [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.nameLabel
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:0]
+                                       
+                                       ]];
+    
     /*
-     * nameLabel
+     * Add height constraint
      */
     
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1
-                                                                  constant:17]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeRight
-                                                                multiplier:1
-                                                                  constant:-17]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeTop
-                                                                multiplier:1
-                                                                  constant:17]];
+    NSLayoutConstraint *hConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
+                                                                   attribute:NSLayoutAttributeBottom
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.contentView
+                                                                   attribute:NSLayoutAttributeBottom
+                                                                  multiplier:1
+                                                                    constant:-17];
+    hConstraint.priority = 999;
+    [self.contentView addConstraint:hConstraint];
     
-    /*
-     * categoryLabel
-     */
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryLabel
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:8]];
-    
-    /*
-     * addressLabel
-     */
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addressLabel
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.categoryLabel
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:8]];
-    
-    /*
-     * addressLabel
-     */
-    
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                 attribute:NSLayoutAttributeTop
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.addressLabel
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:8]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeLeft
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.nameLabel
-                                                                 attribute:NSLayoutAttributeRight
-                                                                multiplier:1
-                                                                  constant:0]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:self.contentView
-                                                                 attribute:NSLayoutAttributeBottom
-                                                                multiplier:1
-                                                                  constant:-17]];
 }
 
 - (UILabel *)nameLabel {

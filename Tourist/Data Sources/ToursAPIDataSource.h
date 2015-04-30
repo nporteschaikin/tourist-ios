@@ -9,11 +9,19 @@
 #import "ToursDataSource.h"
 #import "TouristSessionAPIRequest.h"
 
+@class ToursDataSource;
+
+@protocol ToursDataSourceDelegate
+
+- (void)toursDataSourceDidUpdateTours:(ToursDataSource *)toursDataSource;
+
+@end
+
 @interface ToursAPIDataSource : ToursDataSource
 
-- (id)initWithSessionAPIRequest:(TouristSessionAPIRequest *)request
-                reuseIdentifier:(NSString *)reuseIdentifier;
+@property (weak, nonatomic) id<ToursDataSourceDelegate> delegate;
 
+- (id)initWithAPIRequest:(TouristSessionAPIRequest *)request NS_DESIGNATED_INITIALIZER;
 - (void)performRequest;
 
 @end

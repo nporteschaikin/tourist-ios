@@ -27,10 +27,10 @@
 
 @interface APIRequest : NSObject
 
-@property (strong, nonatomic) id<APIRequestDelegate> delegate;
-@property (strong, nonatomic) NSString *base;
-@property (strong, nonatomic) NSString *endpoint;
-@property (strong, nonatomic) NSString *method;
+@property (weak, nonatomic) id<APIRequestDelegate> delegate;
+@property (copy, nonatomic) NSString *base;
+@property (copy, nonatomic) NSString *endpoint;
+@property (copy, nonatomic) NSString *method;
 @property (strong, nonatomic) NSDictionary *params;
 @property (strong, nonatomic) NSDictionary *body;
 @property (strong, nonatomic, readonly) NSMutableURLRequest *request;

@@ -13,9 +13,8 @@
 
 @interface ToursViewController : UITableViewController
 
-@property (strong, nonatomic, readonly) NSString *reuseIdentifier;
-@property (strong, nonatomic, readonly) Session *session;
 @property (strong, nonatomic) ToursDataSource *dataSource;
+@property (strong, nonatomic, readonly) Session *session;
 
 - (id)initWithSession:(Session *)session;
 

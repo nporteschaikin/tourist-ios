@@ -11,6 +11,4 @@
 
 @interface ToursNearbyViewController : ToursViewController
 
-@property (strong, nonatomic) ToursAPIDataSource *dataSource;
-
 @end
