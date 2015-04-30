@@ -9,6 +9,7 @@
 #import "TourDataSource.h"
 #import "TourHeaderTableViewCell.h"
 #import "PinsTableViewCell.h"
+#import "TourDetailsTableViewCell.h"
 
 @interface TourDataSource () <APIRequestDelegate>
 
@@ -22,6 +23,7 @@
 @implementation TourDataSource
 
 static NSString * const PinsTableViewCellReuseIdentifier = @"PinsTableViewCellReuseIdentifier";
+static NSString * const TourDetailsTableViewCellReuseIdentifier = @"TourDetailsTableViewCellReuseIdentifier";
 
 - (instancetype)initWithAPIRequest:(TouristSessionAPIRequest *)request {
     if (self = [super init]) {
@@ -38,6 +40,8 @@ static NSString * const PinsTableViewCellReuseIdentifier = @"PinsTableViewCellRe
 - (void)registerReuseIdentifiersForTableView:(UITableView *)tableView {
     [tableView registerClass:[PinsTableViewCell class]
       forCellReuseIdentifier:PinsTableViewCellReuseIdentifier];
+    [tableView registerClass:[TourDetailsTableViewCell class]
+      forCellReuseIdentifier:TourDetailsTableViewCellReuseIdentifier];
 }
 
 /*
@@ -73,11 +77,23 @@ static NSString * const PinsTableViewCellReuseIdentifier = @"PinsTableViewCellRe
             TourHeaderTableViewCell *cell = [[TourHeaderTableViewCell alloc] init];
             cell.nameLabel.text = [self.tour objectForKey:@"name"];
             cell.descriptionLabel.text = [self.tour objectForKey:@"description"];
-            cell.pinsCount = [NSNumber numberWithInteger:[(NSArray *)[self.tour objectForKey:@"pins"] count]];
             return cell;
         }
         case TourDataSourceSectionDetails: {
-            return nil;
+            TourDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TourDetailsTableViewCellReuseIdentifier];
+            switch (row) {
+                case TourDataSourceDetailsRowUser: {
+                    cell.titleLabel.text = [self.user objectForKey:@"name"];
+                    break;
+                }
+                default: {// TourDataSourceDetailsRowPins
+                    cell.titleLabel.text = [NSString stringWithFormat:@"%d pin(s)", (int)self.pins.count];
+                    break;
+                }
+            }
+            [cell setNeedsUpdateConstraints];
+            [cell updateConstraintsIfNeeded];
+            return cell;
         }
         default: { // TourDataSourceSectionPins:
             PinsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PinsTableViewCellReuseIdentifier];
@@ -99,7 +115,7 @@ static NSString * const PinsTableViewCellReuseIdentifier = @"PinsTableViewCellRe
             return 1;
         }
         case TourDataSourceSectionDetails: {
-            return 0;
+            return 2;
         }
         default: { // TourDataSourceSectionPins:
             return self.pins.count;

@@ -14,7 +14,6 @@
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *descriptionLabel;
 @property (strong, nonatomic) UILabel *userNameLabel;
-@property (strong, nonatomic) UILabel *pinsLabel;
 
 @end
 
@@ -55,7 +54,6 @@
     
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.descriptionLabel];
-    [self.contentView addSubview:self.pinsLabel];
     
     /*
      * Update constraints.
@@ -119,26 +117,7 @@
                                                                        toItem:self.nameLabel
                                                                     attribute:NSLayoutAttributeRight
                                                                    multiplier:1
-                                                                     constant:0],
-                                       
-                                       /*
-                                        * pinLabel
-                                        */
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.pinsLabel
-                                                                    attribute:NSLayoutAttributeRight
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.contentView
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1
-                                                                     constant:-17],
-                                       [NSLayoutConstraint constraintWithItem:self.pinsLabel
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.contentView
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                   multiplier:1
-                                                                     constant:-17]
+                                                                     constant:0]
                                        ]];
     
 }
@@ -163,27 +142,6 @@
                                                  size:14.0f];
     }
     return _descriptionLabel;
-}
-
-- (UILabel *)pinsLabel {
-    if (!_pinsLabel) {
-        _pinsLabel = [[UILabel alloc] init];
-        _pinsLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _pinsLabel.textColor = [UIColor whiteColor];
-        _pinsLabel.font = [UIFont fontWithName:TouristDefaultFontName
-                                          size:12.0f];
-    }
-    return _pinsLabel;
-}
-
-- (void)setPinsCount:(NSNumber *)pinsCount {
-    _pinsCount = pinsCount;
-    
-    /*
-     * Set pins label.
-     */
-    
-    self.pinsLabel.text = [NSString stringWithFormat:@"%@ pins", _pinsCount];
 }
 
 @end

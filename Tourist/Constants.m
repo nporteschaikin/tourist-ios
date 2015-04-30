@@ -8,8 +8,8 @@
 
 #import "Constants.h"
 
-// NSString * const IOBaseURL = @"http://127.0.0.1:3333/";
-NSString * const IOBaseURL = @"http://tourist-io.herokuapp.com/";
+NSString * const IOBaseURL = @"http://127.0.0.1:3333/";
+// NSString * const IOBaseURL = @"http://tourist-io.herokuapp.com/";
 NSString * const IOAuthEndpoint = @"auth";
 NSString * const IOToursNearEndpoint = @"tours/near";
 NSString * const IOToursCreateEndpoint = @"tours";

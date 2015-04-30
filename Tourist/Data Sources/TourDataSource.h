@@ -15,6 +15,11 @@ typedef NS_ENUM(NSInteger, TourDataSourceSection) {
     TourDataSourceSectionPins
 };
 
+typedef NS_ENUM(NSInteger, TourDataSourceDetailsRow) {
+    TourDataSourceDetailsRowUser,
+    TourDataSourceDetailsRowPins
+};
+
 @class TourDataSource;
 
 @protocol TourDataSourceDelegate

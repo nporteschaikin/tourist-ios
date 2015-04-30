@@ -12,7 +12,7 @@
 @interface FoursquareVenuesDataSource () <APIRequestDelegate>
 
 @property (strong, nonatomic) FoursquareAPIRequest *request;
-@property (copy, nonatomic) NSArray *venues;
+@property (strong, nonatomic) NSArray *venues;
 
 @end
 

@@ -37,7 +37,6 @@ static NSString * const ToursTableViewCellReuseIdentifier = @"ToursTableViewCell
     
     cell.nameLabel.text = [tour objectForKey:@"name"];
     cell.descriptionLabel.text = [tour objectForKey:@"description"];
-    cell.pinsCount = [NSNumber numberWithInteger:[(NSArray *)[tour objectForKey:@"pins"] count]];
     
     /*
      * Update constraints.
